@@ -4,25 +4,22 @@ import { StyleSheet, Text, View, Image, Animated } from "react-native";
 export function ShowCard({ show }) {
   return (
     <View key={show.id} style={styles.card}>
-      <Image
-        source={{ uri: show.primaryImage.imageUrl }}
-        style={styles.image}
-      />
-      <Text style={styles.title}>{show.originalTitleText.text}</Text>
-      <Text style={styles.release}>{show.releaseYear.year}</Text>
-      <Text style={styles.plot}>{show.plot.plotText.plainText}</Text>
-      <Text style={styles.rating}>{show.ratingsSummary.aggregateRating}</Text>
+      <Image source={{ uri: show.movie_image }} style={styles.image} />
+      <Text style={styles.title}>{show.title}</Text>
+      <Text style={styles.release}>{show.release_date}</Text>
+      <Text style={styles.plot}>{show.overview}</Text>
+      <Text style={styles.rating}>{show.vote_average}%</Text>
     </View>
   );
 }
 
 export function AnimatedShowCard({ show, index }) {
-  const opacity = useRef(new Animated.value(0)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.timing(opacity, {
       toValue: 1,
-      duration: 500,
+      duration: 1000,
       delay: index * 250,
       useNativeDriver: true,
     }).start();
