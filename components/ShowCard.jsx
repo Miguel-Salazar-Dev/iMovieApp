@@ -3,11 +3,15 @@ import { StyleSheet, Text, View, Image, Animated } from "react-native";
 
 export function ShowCard({ show }) {
   return (
-    <View key={show.id} style={styles.card}>
+    <View className="bg-gray-500/10 p-4 rounded-xl gap-4 mb-10" key={show.id}>
       <Image source={{ uri: show.movie_image }} style={styles.image} />
       <Text style={styles.title}>{show.title}</Text>
       <Text style={styles.release}>{show.release_date}</Text>
-      <Text style={styles.plot}>{show.overview}</Text>
+      <Text style={styles.release}>{show.key}</Text>
+      <Text style={styles.release}>{show.id}</Text>
+      <Text className="mt-2 flex-shrink" style={styles.plot}>
+        {show.overview.slice(0, 100)} ...
+      </Text>
       <Text style={styles.rating}>{show.vote_average}%</Text>
     </View>
   );
@@ -19,7 +23,7 @@ export function AnimatedShowCard({ show, index }) {
   useEffect(() => {
     Animated.timing(opacity, {
       toValue: 1,
-      duration: 1000,
+      duration: 500,
       delay: index * 250,
       useNativeDriver: true,
     }).start();
