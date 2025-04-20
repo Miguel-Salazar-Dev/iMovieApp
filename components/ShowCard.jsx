@@ -1,18 +1,23 @@
 import { useEffect, useRef } from "react";
-import { StyleSheet, Text, View, Image, Animated } from "react-native";
+import { Text, View, Image, Animated } from "react-native";
 
 export function ShowCard({ show }) {
   return (
-    <View className="bg-gray-500/10 p-4 rounded-xl gap-4 mb-10" key={show.id}>
-      <Image source={{ uri: show.movie_image }} style={styles.image} />
-      <Text style={styles.title}>{show.title}</Text>
-      <Text style={styles.release}>{show.release_date}</Text>
-      <Text style={styles.release}>{show.key}</Text>
-      <Text style={styles.release}>{show.id}</Text>
-      <Text className="mt-2 flex-shrink" style={styles.plot}>
-        {show.overview.slice(0, 100)} ...
+    <View className="bg-gray-500/10 p-4 rounded-xl gap-1 mb-4" key={show.id}>
+      <Image
+        source={{ uri: show.movie_image }}
+        className="border-r-slate-400 border rounded-lg w-[169] h-[250] mb-3"
+      />
+      <Text className="text-2xl font-bold mb-0 color-slate-100">
+        {show.title}
       </Text>
-      <Text style={styles.rating}>{show.vote_average}%</Text>
+      <Text className="text-xs color-slate-300 mb-2">{show.release_date}</Text>
+      <Text className="mb-2 flex-shrink text-base text-slate-200 ">
+        {show.overview.slice(0, 150)} ...
+      </Text>
+      <Text className="text-2xl font-bold color-yellow-500">
+        {show.vote_average}%
+      </Text>
     </View>
   );
 }
@@ -35,38 +40,3 @@ export function AnimatedShowCard({ show, index }) {
     </Animated.View>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    marginBottom: 10,
-    paddingTop: 20,
-  },
-  image: {
-    width: 169,
-    height: 250,
-    borderRadius: 10,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginTop: 10,
-    marginBottom: 10,
-    color: "#fff",
-  },
-  plot: {
-    fontSize: 16,
-    color: "#eee",
-  },
-  release: {
-    fontSize: 12,
-    color: "#fff",
-    marginBottom: 5,
-  },
-  rating: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "gold",
-    marginTop: 5,
-    marginBottom: 10,
-  },
-});
