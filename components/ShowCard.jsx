@@ -8,7 +8,7 @@ export function ShowCard({ show }) {
       <View className="flex-row gap-4 justify-start items-center">
         <Image
           source={{ uri: show.movie_image }}
-          className="border-slate-900 border rounded-lg w-[169] h-[250] mb-3"
+          className="border-yellow-500 border rounded-lg w-[169] h-[250] mb-3"
         />
         <Score score={show.vote_average} />
       </View>
