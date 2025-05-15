@@ -17,11 +17,9 @@ export function Main() {
 
   return (
     <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <View style={{ marginBottom: 20, marginTop: 10 }}>
+      <View className="mb-5 mt-3">
         <Logo height={50} />
-        <Text style={{ fontSize: 22, color: "#f5c518", marginTop: 10 }}>
-          iMovie App
-        </Text>
+        <Text className="text-2xl color-yellow-500 mt-3">iMovie App</Text>
       </View>
       {shows.length === 0 ? (
         <ActivityIndicator color={"gold"} size={"large"} />

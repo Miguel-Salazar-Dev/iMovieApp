@@ -1,22 +1,26 @@
 import { View, Text } from "react-native";
 
 export function Score({ score }) {
-  /*
-  const getColor = () => {
-    if (score < 40) return "-red-500";
-    if (score < 85) return "-yellow-500";
-    if (score >= 85) return "-green-500";
+  const getTextColor = () => {
+    if (score < 40) return "color-red-600";
+    if (score < 85) return "color-yellow-600";
+    if (score >= 85) return "color-green-600";
   };
+  const classNameText = getTextColor();
 
-  const className = getColor();
-  //console.log(className);
-*/
+  const getBorderColor = () => {
+    if (score < 40) return "border-red-600";
+    if (score < 85) return "border-yellow-600";
+    if (score >= 85) return "border-green-600";
+  };
+  const classNameBorder = getBorderColor();
+
   return (
     <View
-      className={`flex-row gap-0 border-4 border-yellow-500 w-16 h-16 rounded-full justify-center items-center`}
+      className={`flex-row gap-0 border-4 ${classNameBorder} w-16 h-16 rounded-full justify-center items-center`}
     >
-      <Text className={`text-2xl color-yellow-500 font-bold`}>{score}</Text>
-      <Text className={`text-sm color-yellow-500 font-bold`}>%</Text>
+      <Text className={`text-2xl ${classNameText} font-bold`}>{score}</Text>
+      <Text className={`text-sm ${classNameText} font-bold`}>%</Text>
     </View>
   );
 }
