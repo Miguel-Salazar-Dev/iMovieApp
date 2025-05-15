@@ -1,25 +1,34 @@
 import { useEffect, useRef } from "react";
-import { Text, View, Image, Animated } from "react-native";
+import { Text, View, Image, Animated, Pressable } from "react-native";
 import { Score } from "./Score";
 
 export function ShowCard({ show }) {
   return (
-    <View className="bg-gray-500/10 p-4 rounded-xl gap-1 mb-4" key={show.id}>
-      <View className="flex-row gap-4 justify-start items-center">
-        <Image
-          source={{ uri: show.movie_image }}
-          className="border-yellow-500 border rounded-lg w-[169] h-[250] mb-3"
-        />
-        <Score score={show.vote_average} />
+    <Pressable className="border border-gray-500/10 active:border-yellow-300 rounded-xl mb-4 ">
+      <View
+        className="bg-gray-500/10 p-4 rounded-xl gap-1 w-full flex-col"
+        key={show.id}
+      >
+        <View className="flex-row gap-4 items-center">
+          <Image
+            source={{ uri: show.movie_image }}
+            className="border-yellow-700 border rounded-lg w-[169] h-[250]"
+          />
+          <View className="flex-shrink items-center">
+            <Text className="text-2xl text-center font-bold mb-2 color-slate-100">
+              {show.title}
+            </Text>
+            <Text className="text-xs color-slate-300 mb-2">
+              {show.release_date}
+            </Text>
+            <Score score={show.vote_average} />
+            <Text className="text-base mt-4 flex-shrink text-slate-200 text-pretty">
+              {show.overview.slice(0, 100)} ...
+            </Text>
+          </View>
+        </View>
       </View>
-      <Text className="text-2xl font-bold mb-0 color-slate-100">
-        {show.title}
-      </Text>
-      <Text className="text-xs color-slate-300 mb-2">{show.release_date}</Text>
-      <Text className="mb-2 flex-shrink text-base text-slate-200 ">
-        {show.overview.slice(0, 150)} ...
-      </Text>
-    </View>
+    </Pressable>
   );
 }
 
