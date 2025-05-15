@@ -4,7 +4,7 @@ import { Score } from "./Score";
 
 export function ShowCard({ show }) {
   return (
-    <Pressable className="border border-gray-500/10 active:border-yellow-300 rounded-xl mb-4 ">
+    <Pressable className="border border-gray-500/10 active:border-yellow-500 rounded-xl mb-4 ">
       <View
         className="bg-gray-500/10 p-4 rounded-xl gap-1 w-full flex-col"
         key={show.id}
@@ -12,7 +12,7 @@ export function ShowCard({ show }) {
         <View className="flex-row gap-4 items-center">
           <Image
             source={{ uri: show.movie_image }}
-            className="border-yellow-700 border rounded-lg w-[169] h-[250]"
+            className="border-gray-600 border rounded-lg w-[169] h-[250]"
           />
           <View className="flex-shrink items-center">
             <Text className="text-2xl text-center font-bold mb-2 color-slate-100">
